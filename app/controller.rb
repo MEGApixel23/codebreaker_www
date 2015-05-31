@@ -10,6 +10,8 @@ class Controller
 
   def route(request)
     case request.path
+      when '/'
+        render 'index'
       when '/input_code'
         @game.input_code = request.params['code']
         render_json @game.check_code
@@ -17,14 +19,17 @@ class Controller
         render_json @game.hint
       when '/save_results'
         render_json(@game.save_result request.params['name'])
+      when '/start_again'
+        start_game true
+        render_json(true)
       else
         Rack::Response.new('Not Found', 404)
     end
   end
 
-  def start_game
-    unless @game
-      @game ||= Codebreaker::Game.new
+  def start_game(restart=false)
+    if restart || !@game
+      @game = Codebreaker::Game.new
       @game.start
     end
 
