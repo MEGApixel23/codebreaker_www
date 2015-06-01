@@ -40,11 +40,28 @@ $(document).ready(function(e) {
                 code: code
             },
             success: function(res) {
-                var $layoutClone = $layout.clone();
-                $layoutClone.html(res);
+                if (res === true) {
+                    var username = prompt('You won! Enter your initials to save score');
 
-                $results.append($layoutClone);
+                    saveUsername(username);
+                } else if (res === false) {
+                    alert('You loose!');
+                } else {
+                    var $layoutClone = $layout.clone();
+                    $layoutClone.html(res);
+
+                    $results.append($layoutClone);
+                }
             }
         });
     });
+
+    function saveUsername(username) {
+        $.ajax({
+            url: '/save_results',
+            data: {
+                name: username
+            }
+        });
+    }
 });
