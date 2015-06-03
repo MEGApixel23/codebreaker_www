@@ -18,7 +18,10 @@ class Controller
       when '/hint'
         render_json @game.hint
       when '/save_results'
-        render_json(@game.save_result request.params['name'])
+        test = @game.save_result request.params['name']
+        p test
+        p request.params['name']
+        render_raw(test)
       when '/start_again'
         start_game true
         render_json(true)
@@ -31,12 +34,19 @@ class Controller
     if restart || !@game
       @game = Codebreaker::Game.new
       @game.start
+      @game.instance_variable_set('@code', '1234')
+      @game.instance_variable_set('@scores_file', File.expand_path('../scores.json', __FILE__));
     end
 
     @game
   end
 
   def render_json(data)
+    Rack::Response.new(data.to_json, 200, {'Content-Type' => 'application/json'})
+  end
+
+  def render_raw(data)
+    p data
     Rack::Response.new(data.to_json, 200, {'Content-Type' => 'application/json'})
   end
 

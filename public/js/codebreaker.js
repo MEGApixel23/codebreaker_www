@@ -3,10 +3,10 @@ $(document).ready(function(e) {
     var $results = $('#results');
     var $code = $('#code');
 
-    $('#hint').click(function(e) {
+    $('#get-hint').click(function(e) {
         e.preventDefault();
 
-        var $hintContainer = $('#hint-container');
+        var $hintContainer = $('#hint');
 
         $.ajax({
             url: '/hint',
@@ -45,10 +45,14 @@ $(document).ready(function(e) {
 
                     saveUsername(username);
                 } else if (res === false) {
-                    alert('You loose!');
+                    if (confirm('You loose. Start again?')) {
+                        $.get('/start_again', function() {
+                            window.location.href = window.location.href;
+                        });
+                    }
                 } else {
                     var $layoutClone = $layout.clone();
-                    $layoutClone.html(res);
+                    $layoutClone.html(code + ' : ' + res);
 
                     $results.append($layoutClone);
                 }
@@ -61,6 +65,9 @@ $(document).ready(function(e) {
             url: '/save_results',
             data: {
                 name: username
+            },
+            success: function(res) {
+                console.log(res);
             }
         });
     }
