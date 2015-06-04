@@ -60,6 +60,32 @@ $(document).ready(function(e) {
         });
     });
 
+    $('#show-scores').click(function() {
+        $.ajax({
+            url: '/scores',
+            success: function(res) {
+                var $scores = $('#scores-table tbody'),
+                    $layout = $('<tr><td class="username"></td><td class="tries"></td></tr>');
+
+                for (var i=0; i<res.length; i++) {
+                    var $clone = $layout.clone();
+
+                    $clone.find('.username').text(res[i].name);
+                    $clone.find('.tries').text(parseInt(res[i].tries) + 1);
+
+                    $scores.append($clone);
+                }
+            }
+        });
+    });
+
+    $('#restart').click(function(e) {
+        $.get('/start_again');
+
+        $('#results').html('');
+        $('#hint').html('');
+    });
+
     function saveUsername(username) {
         $.ajax({
             url: '/save_results',

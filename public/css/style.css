@@ -19,3 +19,16 @@ body {
     background-color: #ececec;
     border-radius: 10px;
 }
+
+.modal-body {
+    max-height: 500px;
+    overflow-y: scroll;
+}
+
+.header {
+    padding: 15px 30px;
+    background-color: #ffffff;
+    text-align: center;
+    font-size: 50px;
+    color: #6facdd;
+}

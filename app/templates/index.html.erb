@@ -16,7 +16,12 @@
   <title>Codebreaker</title>
 </head>
 <body>
+<div class="container header">
+  CodeBreaker
+</div>
 <div class="container">
+  <a href="#" id="show-scores" data-toggle="modal" data-target="#myModal">Scores</a> |
+  <a href="#" id="restart">Restart</a>
   <div class="input-code row">
     <div class="col-md-10" style="text-align: center">
       <input id="code" type="text" class="form-control">
@@ -36,5 +41,31 @@
     <div id="results" class="col-md-12 results"></div>
   </div>
 </div>
+
+<!-- Modal -->
+<div class="modal fade" id="myModal" tabindex="-1" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true">
+  <div class="modal-dialog">
+    <div class="modal-content">
+      <div class="modal-header">
+        <button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">&times;</span></button>
+        <h4 class="modal-title" id="myModalLabel">Scores</h4>
+      </div>
+      <div class="modal-body">
+        <table id="scores-table" class="table table-stripped">
+          <thead>
+            <tr>
+              <th>User</th>
+              <th>Tries</th>
+            </tr>
+          </thead>
+          <tbody>
+          </tbody>
+        </table>
+      </div>
+    </div>
+  </div>
+</div>
+<!-- Modal -->
+
 </body>
 </html>
