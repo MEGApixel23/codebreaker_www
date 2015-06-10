@@ -1,0 +1,24 @@
+GIT
+  remote: https://github.com/MEGApixel23/Codebreaker.git
+  revision: 3b0a72b4099d18b7587de4f3445f04ce47c4ea9e
+  specs:
+    codebreaker (0.1.2)
+      json (~> 1.8.2)
+
+GEM
+  remote: https://rubygems.org/
+  specs:
+    json (1.8.3)
+    json (1.8.3-java)
+    rack (1.6.1)
+
+PLATFORMS
+  java
+  x64-mingw32
+
+DEPENDENCIES
+  codebreaker!
+  rack
+
+BUNDLED WITH
+   1.10.3
