@@ -1,4 +1,4 @@
-require "codebreaker"
+require 'codebreaker'
 require 'irb'
 require 'json'
 
