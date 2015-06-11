@@ -60,6 +60,15 @@ $(document).ready(function(e) {
         });
     });
 
+    $('#code').mask('6666', {
+        translation: {
+            '6': {
+                pattern: /[0-6]/,
+            },
+            placeholder: "1234"
+        }
+    });
+
     $('#show-scores').click(function() {
         $.ajax({
             url: '/scores',

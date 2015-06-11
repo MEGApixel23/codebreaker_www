@@ -34,7 +34,6 @@ class Controller
     if restart || !@game
       @game = Codebreaker::Game.new
       @game.start
-      #@game.instance_variable_set('@code', '1234')
       @game.instance_variable_set('@scores_file', @scores_file)
     end
 
