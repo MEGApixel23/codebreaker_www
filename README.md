@@ -1,6 +1,6 @@
 # Codebreaker WWW (Web version)
 
-Its a web version of game provided by Codebreaker gem.
+Its a web version of game provided by [Codebreaker gem](https://github.com/MEGApixel23/Codebreaker).
 
 ## Demo
 https://fast-hamlet-4393.herokuapp.com/
